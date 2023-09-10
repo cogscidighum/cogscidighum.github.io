@@ -11,8 +11,8 @@
     </py-config>
 
     <py-script>
-      from icecream import ic
-      #import timeit
+      #from icecream import ic
+      import timeit
       
       celscilist = {
       'dd':{'x':{'followers': 400}},
@@ -34,7 +34,8 @@
           return person
           
       for person in celscilist:
-          dh=ic(person,checkfame(person))
-          #dhrt=ic(timeit.timeit('', number=1))
+          #dh=ic(person,checkfame(person))
+          print(person,checkfame(person))
+          dhrt=print(timeit.timeit('', number=1))
     </py-script>
   </body>
