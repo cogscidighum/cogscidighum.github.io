@@ -1,0 +1,40 @@
+  <head>
+    <title>Ice Cream Picker</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+
+    <py-config>
+      packages = ["icecream", "pandas"]
+    </py-config>
+
+    <py-script>
+      from icecream import *
+      import timeit
+      
+      celscilist = {
+      'dd':{'x':{'followers': 400}},
+      'jp':{'x':{'followers': 300}},
+      'sh':{'x':{'followers': 200}},
+      'gs':{'x':{'followers': 100}}
+      }
+      
+      class celsci():
+      
+          def fame(x):
+              y="low"
+              if x>300:
+                  y= 'high'
+              return y
+       
+      def checkfame(x):
+          person = celsci.fame(celscilist[x]['x']['followers'])
+          return person
+          
+      for person in celscilist:
+          dh=ic(person,checkfame(person))
+          dhrt=ic(timeit.timeit('', number=1))
+    </py-script>
+  </body>
