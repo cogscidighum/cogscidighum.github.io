@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<py-config>
-    plugins = [
-      "https://pyscript.net/latest/plugins/python/py_tutor.py"
-    ]
-</py-config>
+    <meta charset="UTF-8">
+    <title>Inpout1 Demo</title>
+    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css">
 </head>
 <body>
-<section class="pyscript">
-    Hello world! <br>
-    Input time, Output time:
     <py-script>
         from datetime import datetime
         now = datetime.now()
         display(now.strftime("%m/%d/%Y, %H:%M:%S"))
     </py-script>
-</section>
 </body>
 </html>
