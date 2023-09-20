@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inpout!</title>
+        <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
+        <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css">
+    </head>
+    <body>
+        <py-script>
+            ax=input("What is your name?")
+            display ("Hi ", ax)
+        </py-script>
+    </body>
+</html>
