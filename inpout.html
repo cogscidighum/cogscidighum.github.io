@@ -8,7 +8,7 @@
     </head>
     <body>
           <div id="inpout-source">
-            <h3>Input</h3><input type="text" id="txt-inp1" class="py-input" size="40" /><br>
+            <h3>Input:</h3><input type="text" id="txt-inp1" class="py-input" size="40" /><br>
             <button
                 type="submit"
                 id="btn-proc"
@@ -18,7 +18,7 @@
             Process Input
             </button>
         </div>
-        <h3>Output</h3>
+        <h3>Output:</h3>
         <div id="inp1-out1"></div>
         <div id="out1" hidden>
 
@@ -31,7 +31,7 @@
               inp1 = "Hi " + Element("txt-inp1").element.value
                             
               Element("inp1-out1").element.style.display = "block"
-              display (inp1, target="inp1-out1", append="False")
+              display (inp1, target="inp1-out1", append="True")
         </py-script>
     </body>
 </html>
