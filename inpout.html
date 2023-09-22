@@ -8,14 +8,14 @@
     </head>
     <body>
           <div id="inpout-source">
-            <h3>Input:</h3><input type="text" id="txt-inp1" class="py-input" size="40" /><br>
+            <h3>Input:</h3><input type="text" id="txt-inp1" class="py-input" size="20" /><br>
             <button
                 type="submit"
                 id="btn-proc"
                 class="py-button"
                 py-click="procinp1()"
             >
-            Process Input
+            Process
             </button>
         </div>
         <h3>Output:</h3>
@@ -31,7 +31,7 @@
               inp1 = "Hi " + Element("txt-inp1").element.value
                             
               Element("inp1-out1").element.style.display = "block"
-              display (inp1, target="inp1-out1", append="True")
+              display (inp1, target="inp1-out1", append="False")
         </py-script>
     </body>
 </html>
