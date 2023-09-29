@@ -3,17 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSDH uTuber!</title>
-  
+    
+    <style>
+        body {
+            text-align: center;
+            background-color:whitesmoke;
+          }
+
+        #phrase {
+            padding: 15px;
+            width: 20%;
+            border: 5px solid rgb(49, 47, 68);
+            text-align: center;
+        }
+
+        #prompt-holder {
+            width: 50%;
+            height: 50%;
+            margin: 0 auto;
+            border: 5px solid rgb(50, 31, 221);
+            padding: 20px;
+            text-align: center;
+            background-color:rgb(246, 247, 248)
+    }
+    </style>
 </head>
 <body>
+    <div id="headerImg"></div>
+
+    <h3><strong>Input:</strong></h3>
+    <audio controls>
+        <source srs="https://file-examples.com/wp-content/storage/2017/11/file_example_MP3_700KB.mp3"/>
+    </audio>
     <br>
-    <input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k">
+    <div id="text-inputImg"><input type="text" title="Input-image link" id="inputTextImg" placeholder="enter image link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" id="iframe1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br>
+    <br>
+    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <br>
     <br>
     <button id="run"><strong>Scrape</strong></button>
     <br><br>
     <h3><strong>Output:</strong></h3>
-    <div id="output_holder"></div>
+
+    <div id="prompt-holder"></div>
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
@@ -22,15 +59,39 @@
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     //const inputText = document.getElementById("inputTextImg");
     const generate = document.getElementById("run");
-    const output_holder = document.getElementById("output-holder");
+    const prompt_holder = document.getElementById("prompt-holder");
+
+    const celscilist = {
+      'dd': { 'x': { 'followers': 400 } },
+      'jp': { 'x': { 'followers': 300 } },
+      'sh': { 'x': { 'followers': 200 } },
+      'gs': { 'x': { 'followers': 100 } }
+    };
     
+    class Celsci {
+      static fame(x) {
+        let y = "low";
+        if (x > 300) {
+          y = 'high';
+        }
+        return y;
+      }
+    }
+    
+    function checkFame(x) {
+      const person = Celsci.fame(celscilist[x]['x']['followers']);
+      return person;
+    }
+    
+    prompt_holder.textContent =checkFame('dd');            
+
     generate.addEventListener("click", async () =>{
         try {
             //checkFame(x)
-            ///var img = document.createElement("img");
-            ///img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
-            ///var src = document.getElementById("headerImg");
-            ///src.appendChild(img);
+            var img = document.createElement("img");
+            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            var src = document.getElementById("headerImg");
+            src.appendChild(img);
 
             //const textInput = inputTextVideo.value;
             
@@ -39,7 +100,7 @@
             const result = await app.predict("/predict", [      
             inputTextVideo.value, // string  in 'prompt' Textbox component
         ]);
-            output_holder.textContent = result.data;            
+            prompt_holder.textContent = result.data;            
 
             } catch (error){
                  console.log("Error:",error.message);         
