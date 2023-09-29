@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSDH uTuber!</title>
+  
+</head>
+<body>
+    <br>
+    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <br>
+    <button id="run"><strong>Scrape</strong></button>
+    <br><br>
+    <h3><strong>Output:</strong></h3>
+    <div id="output-holder"></div>
+</body>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
+<script type="module">
+    
+    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+    //const inputText = document.getElementById("inputTextImg");
+    const generate = document.getElementById("run");
+    const prompt_holder = document.getElementById("prompt-holder");
+    
+    generate.addEventListener("click", async () =>{
+        try {
+            //checkFame(x)
+            var img = document.createElement("img");
+            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            var src = document.getElementById("headerImg");
+            src.appendChild(img);
+
+            //const textInput = inputTextVideo.value;
+            
+
+            const app = await client("https://osaaso-ytscrap.hf.space");
+            const result = await app.predict("/predict", [      
+            inputTextVideo.value, // string  in 'prompt' Textbox component
+        ]);
+            output_holder.textContent = result.data;            
+
+            } catch (error){
+                 console.log("Error:",error.message);         
+            }
+    
+        }
+
+        
+);
+</script>
+</html>
