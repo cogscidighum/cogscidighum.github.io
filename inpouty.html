@@ -8,12 +8,12 @@
 </head>
 <body>
     <br>
-    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k">
     <br>
     <button id="run"><strong>Scrape</strong></button>
     <br><br>
     <h3><strong>Output:</strong></h3>
-    <div id="output-holder"></div>
+    <div id="output_holder"></div>
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
@@ -27,10 +27,10 @@
     generate.addEventListener("click", async () =>{
         try {
             //checkFame(x)
-            var img = document.createElement("img");
-            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
-            var src = document.getElementById("headerImg");
-            src.appendChild(img);
+            ///var img = document.createElement("img");
+            ///img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            ///var src = document.getElementById("headerImg");
+            ///src.appendChild(img);
 
             //const textInput = inputTextVideo.value;
             
