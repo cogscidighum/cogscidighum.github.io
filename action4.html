@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our celsci</title>
+    <div id="output-holder"></div>
+
+  </head>
+
+  <body>
+
+
+    <script>
+        const celscilist = {
+          'dd': { 'x': { 'views': 400 } },
+          'jp': { 'x': { 'views': 300 } },
+          'sh': { 'x': { 'views': 200 } },
+          'gs': { 'x': { 'views': 100 } }
+        };
+        
+        class Celsci {
+          static fame(x) {
+            let y = "low";
+            if (x > 300) {
+              y = 'high';
+            }
+            return y;
+          }
+        }
+        
+        function checkFame(x) {
+          const person = Celsci.fame(celscilist[x]['x']['views']);
+          return person;
+        }
+        
+        output_holder.textContent =checkFame('dd');     
+
+    </script>
+  </body>
+</html>
