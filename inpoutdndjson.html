@@ -72,9 +72,9 @@
         }
 
       
-      const superHeroes1 = JSON.parse(superHeroes);
-      populateHeader(superHeroes1);
-      populateHeroes(superHeroes1);
+      const superHeroes1 = await JSON.parse(superHeroes);
+      await populateHeader(superHeroes1);
+      await populateHeroes(superHeroes1);
 
     }
 
