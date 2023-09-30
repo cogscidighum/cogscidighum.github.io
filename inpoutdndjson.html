@@ -20,15 +20,6 @@
       </section>
 
     <script>
-
-    async function populate() {
-
-      //const requestURL = 'https://cogscidighum.github.io/inpout.json';
-      //const request = new Request(requestURL);
-
-      //const response = await fetch(request);
-      //const superHeroesText = await response.text();
-
         const superHeroes = {
           "squadName" : "Super hero squad",
           "homeTown" : "Metro City",
@@ -70,6 +61,16 @@
             }
           ]
         }
+
+
+    async function populate() {
+
+      //const requestURL = 'https://cogscidighum.github.io/inpout.json';
+      //const request = new Request(requestURL);
+
+      //const response = await fetch(request);
+      //const superHeroesText = await response.text();
+
 
       
       const superHeroes1 = await JSON.parse(superHeroes);
