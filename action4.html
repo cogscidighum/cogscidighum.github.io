@@ -1,4 +1,3 @@
-// Some code
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -13,8 +12,8 @@
 
     <script>
         const celscilist = {
-          'dd': { 'x': { 'views': 600 } },
-          'jp': { 'x': { 'views': 400 } },
+          'dd': { 'info': { 'views': 600 } },
+          'jp': { 'info': { 'views': 400 } },
         };
         
         class Celsci {
@@ -28,7 +27,7 @@
         }
         
         function checkcelsci(x) {
-          const result = Celsci.iscelsci(celscilist[x]['x']['views']);
+          const result = Celsci.iscelsci(celscilist[x]['info']['views']);
           return result;
         }
         
