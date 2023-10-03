@@ -1,10 +1,10 @@
+// Some code
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
 
-    <title>Our celsci</title>
-    <div id="output_holder"></div>
+    <title>CelSCi</title>
 
   </head>
 
@@ -13,28 +13,26 @@
 
     <script>
         const celscilist = {
-          'dd': { 'x': { 'views': 400 } },
-          'jp': { 'x': { 'views': 300 } },
-          'sh': { 'x': { 'views': 200 } },
-          'gs': { 'x': { 'views': 100 } }
+          'dd': { 'x': { 'views': 600 } },
+          'jp': { 'x': { 'views': 400 } },
         };
         
         class Celsci {
-          static fame(x) {
-            let y = "low";
-            if (x > 300) {
-              y = 'high';
+          static iscelsci(x) {
+            let y = "false";
+            if (x > 500) {
+              y = 'true';
             }
             return y;
           }
         }
         
-        function checkFame(x) {
-          const person = Celsci.fame(celscilist[x]['x']['views']);
-          return person;
+        function checkcelsci(x) {
+          const result = Celsci.iscelsci(celscilist[x]['x']['views']);
+          return result;
         }
         
-        output_holder.textContent =checkFame('dd');     
+        document.write(checkcelsci('dd'));     
 
     </script>
   </body>
