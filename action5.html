@@ -13,14 +13,14 @@
     <script>
       async function populate() {
       
-        const requestURL = 'https://cogscidighum.github.io/action5.json';
+        const requestURL = 'https://cogscidighum.github.io/inpout.json';
         const request = new Request(requestURL);
   
         const response = await fetch(request);
         const celscisText = await response.text();
   
         const celscilist1 = JSON.parse(celscisText);
-        document.write(Object.keys(celscilist1.celscilist));     
+        document.write(Object.entries(celscilist1));     
 
         
       }
