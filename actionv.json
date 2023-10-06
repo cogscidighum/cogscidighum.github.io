@@ -1,0 +1,30 @@
+{
+  "squadName" : "CelSci",
+  "homeTown" : "UTube",
+  "formed" : 2002,
+  "channel" : "CogSciDigHum",
+  "active" : true,
+  "members" : [
+    {
+      "name" : "Dan Dennett",
+      "age" : 81,
+      "known" : "Dan",
+      "fields" : [
+        "consciousness",
+        "free will",
+        "thinking"
+      ]
+    },
+    {
+      "name" : "Jordan Peterson",
+      "age" : 60,
+      "known" : "Jo",
+      "fields" : [
+        "free speech",
+        "psychology",
+        "social media"
+      ]
+    }
+    
+  ]
+}
