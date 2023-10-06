@@ -20,26 +20,13 @@
         const celscisText = await response.text();
   
         const celscilist = JSON.parse(celscisText);
-        document.write(celscilist.entries);     
+        document.write(Object.entries(celscilist));     
 
         
       }
       
         
-        class Celsci {
-          static iscelsci(x) {
-            let y = "false";
-            if (x > 1000) {
-              y = 'true';
-            }
-            return y;
-          }
-        }
-        
-        function checkcelsci(x) {
-          const result = Celsci.iscelsci(celscilist[x]['info']['views']);
-          return result;
-        }
+
         
         populate();
     </script>
