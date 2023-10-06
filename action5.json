@@ -1,14 +1,12 @@
 {
-  "celsci":
-      {"dd":
-        {"info":
+"dd":
+        {
+          "youtube":
+          {"views": 600}
+        },
+"jp":
+        {
+          "youtube":
           {"views": 600}
         }
-      },
-  "celsci":
-      {"jp":
-        {"info":
-          {"views": 400}
-        }
-      }
 }
