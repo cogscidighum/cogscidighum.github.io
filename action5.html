@@ -11,15 +11,17 @@
 
 
     <script>
+      async function populate() {
       
-      const requestURL = 'https://cogscidighum.github.io/action5.json';
-      const request = new Request(requestURL);
-
-      const response = await fetch(request);
-      const celscisText = await response.text();
-
-      const celscilist = JSON.parse(celscisText);
-
+        const requestURL = 'https://cogscidighum.github.io/action5.json';
+        const request = new Request(requestURL);
+  
+        const response = await fetch(request);
+        const celscisText = await response.text();
+  
+        const celscilist = JSON.parse(celscisText);
+      }
+      
         
         class Celsci {
           static iscelsci(x) {
@@ -37,7 +39,7 @@
         }
         
         document.write(checkcelsci('dd'));     
-
+        populate();
     </script>
   </body>
 </html>
