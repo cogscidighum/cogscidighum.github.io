@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>CelSCi</title>
+
+  </head>
+
+  <body>
+
+
+    <script>
+      
+      const requestURL = 'https://cogscidighum.github.io/action5.json';
+      const request = new Request(requestURL);
+
+      const response = await fetch(request);
+      const celscisText = await response.text();
+
+      const celscilist = JSON.parse(celscisText);
+
+        
+        class Celsci {
+          static iscelsci(x) {
+            let y = "false";
+            if (x > 1000) {
+              y = 'true';
+            }
+            return y;
+          }
+        }
+        
+        function checkcelsci(x) {
+          const result = Celsci.iscelsci(celscilist[x]['info']['views']);
+          return result;
+        }
+        
+        document.write(checkcelsci('dd'));     
+
+    </script>
+  </body>
+</html>
