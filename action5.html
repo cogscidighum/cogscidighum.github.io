@@ -20,6 +20,9 @@
         const celscisText = await response.text();
   
         const celscilist = JSON.parse(celscisText);
+        document.write(checkcelsci('dd'));     
+
+        
       }
       
         
@@ -38,7 +41,6 @@
           return result;
         }
         
-        document.write(checkcelsci('dd'));     
         populate();
     </script>
   </body>
