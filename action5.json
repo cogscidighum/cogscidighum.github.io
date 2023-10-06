@@ -1,7 +1,13 @@
 {
   "celscilist":
-  [
-  "dd":{"info":{"views": 600}},
-  "jp":{"info":{"views": 500}}
-  ]
+    [
+      {
+      "name":"dd",
+      "views": 600
+      },
+      {
+      "name":"jp",
+      "views": 600
+      }
+    ]
 }
