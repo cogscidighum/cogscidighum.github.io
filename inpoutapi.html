@@ -2,26 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>CSDH uTuber!</title>
-        <style>
-        body {
-            text-align: center;
-            //background-color:whitesmoke;
-          }
-            </style>
+    
 </head>
 <body>
-
     <h3><strong>Input:</strong></h3>
 
+
+    <br>
     <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"></div>
     <br>
     <br>
-    <button id="run">Scrape</button>
+    <button id="run"><strong>Scrape</strong></button>
     <br><br>
-    <h3>Output:</h3>
+    <h3><strong>Output:</strong></h3>
 
-    <div id="output"></div>
+    <div id="prompt-holder"></div>
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
@@ -29,19 +26,49 @@
     
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     const generate = document.getElementById("run");
-    const output_holder = document.getElementById("output");
+    const prompt_holder = document.getElementById("prompt-holder");
+
+    const celscilist = 
+    {
+      'celeb1': { 'x': { 'views': 1000 } },
+      'celeb2': { 'x': { 'views': 10000 } },
+      'celeb3': { 'x': { 'followers': 100000 } },
+      'celeb4': { 'x': { 'followers': 1000000 } },
+      'celeb5': { 'x': { 'followers': 10000000 } },
+    };
     
+    class Celsci {
+      static view(x) {
+        let y = "low";
+        if (x > 300) {
+          y = 'high';
+        }
+        return y;
+      }
+    }
+    
+    function checkFame(x) {
+      const person = Celsci.view(celscilist[x]['x']['followers']);
+      return person;
+    }
+    
+    //prompt_holder.textContent =checkView('dd');            
 
     generate.addEventListener("click", async () =>{
         try {
-              const response_0 = await fetch("");
-              const exampleImage = await response_0.blob(inputTextVideo);
-              						
-              const app = await client("https://cognitivescience-gradio-demo.hf.space");
-              const result = await app.predict("/predict", [
-              				exampleImage, 	// blob in 'img' Image component
-              	]);
-            output_holder.textContent = result.data;            
+            //checkFame(x)
+
+
+            const textInput = inputTextVideo.value;
+            const response_0 = await fetch(textInput);
+           const exampleImage = await response_0.blob();
+
+            const app = await client("https://cognitivescience-gradio-demo.hf.space");
+            const result = await app.predict("/predict", [      
+            exampleImage, // string  in 'prompt' Textbox component
+        ]);
+            prompt_holder.textContent = result.data;
+            //prompt_holder.textContent =checkView(result.data author);            
 
             } catch (error){
                  console.log("Error:",error.message);         
