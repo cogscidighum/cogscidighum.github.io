@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>CogSciDigHum Colorpicker Eydopper!</title>
+ </head>
+ <body>
+   <button id="open_eyedropper">Open Eyedropper</button>
+   <script>
+      let btn = document.getElementById('open_eyedropper')
+      if (!window.EyeDropper) {
+        console.log('Your browser does not support the EyeDropper API');
+      }else {
+          console.log("Browser supports EyeDropper");
+          btn.addEventListener('click', () => {
+            // create an object for EyeDropper interface 
+            const eyeDropper = new EyeDropper();
+
+            // open the eyedropper api
+            eyeDropper.open().then(result => { 
+              // color details will be printed if the user selects a color
+              console.log(result); 
+            }).catch(e => {
+              console.log("error:", e);
+            });
+          });
+      }
+   </script>
+ </body>
+</html>
