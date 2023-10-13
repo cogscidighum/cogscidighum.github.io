@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSDH uTuber!</title>
+        <style>
+        body {
+            text-align: center;
+            //background-color:whitesmoke;
+          }
+            </style>
+</head>
+<body>
+
+    <h3><strong>Input:</strong></h3>
+
+    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <br>
+    <br>
+    <button id="run">Scrape</button>
+    <br><br>
+    <h3>Output:</h3>
+
+    <div id="output"></div>
+</body>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
+<script type="module">
+    
+    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+    const generate = document.getElementById("run");
+    const output_holder = document.getElementById("output");
+    
+
+    generate.addEventListener("click", async () =>{
+        try {
+              const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+              const exampleImage = await response_0.blob();
+              						
+              const app = await client("https://cognitivescience-gradio-demo.hf.space/--replicas/zlxg2/");
+              const result = await app.predict("/predict", [
+              				exampleImage, 	// blob in 'img' Image component
+              	]);
+            output_holder.textContent = result.data;            
+
+            } catch (error){
+                 console.log("Error:",error.message);         
+            }
+    
+        }
+
+        
+);
+</script>
+</html>
