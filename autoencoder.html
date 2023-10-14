@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autoencoder in JavaScript</title>
+</head>
+<body>
+    <h1>Autoencoder Example</h1>
+    <script>
+        // Define the architecture of the autoencoder
+        const inputSize = 5; // Number of input neurons
+        const hiddenSize = 3; // Number of neurons in the hidden layer
+        const outputSize = 5; // Number of output neurons
+
+        // Define the hyperparameters
+        const learningRate = 0.1;
+        const epochs = 1000;
+
+        // Initialize weights and biases
+        const weightsEncoder = new Array(hiddenSize * inputSize);
+        const weightsDecoder = new Array(outputSize * hiddenSize);
+        const biasEncoder = new Array(hiddenSize).fill(0);
+        const biasDecoder = new Array(outputSize).fill(0);
+
+        // Initialize weights with small random values
+        for (let i = 0; i < hiddenSize * inputSize; i++) {
+            weightsEncoder[i] = Math.random(); // Initialize weights to small random values
+        }
+
+        for (let i = 0; i < outputSize * hiddenSize; i++) {
+            weightsDecoder[i] = Math.random(); // Initialize weights to small random values
+        }
+
+        // Initialize training data
+        const trainingData = [
+            [0, 0, 0, 1, 0],
+            [0, 0, 1, 0, 0],
+            [0, 1, 0, 0, 0],
+            [1, 0, 0, 0, 0]
+        ];
+
+        // Training loop
+        for (let epoch = 0; epoch < epochs; epoch++) {
+            for (const input of trainingData) {
+                // Forward pass (encoding)
+                const hiddenLayerOutput = new Array(hiddenSize).fill(0);
+                for (let i = 0; i < hiddenSize; i++) {
+                    hiddenLayerOutput[i] = 0;
+                    for (let j = 0; j < inputSize; j++) {
+                        hiddenLayerOutput[i] += input[j] * weightsEncoder[i * inputSize + j];
+                    }
+                    hiddenLayerOutput[i] += biasEncoder[i];
+                }
+
+                // Forward pass (decoding)
+                const outputLayerOutput = new Array(outputSize).fill(0);
+                for (let i = 0; i < outputSize; i++) {
+                    outputLayerOutput[i] = 0;
+                    for (let j = 0; j < hiddenSize; j++) {
+                        outputLayerOutput[i] += hiddenLayerOutput[j] * weightsDecoder[i * hiddenSize + j];
+                    }
+                    outputLayerOutput[i] += biasDecoder[i];
+                }
+
+                // Backpropagation (updating weights)
+                for (let i = 0; i < inputSize; i++) {
+                    for (let j = 0; j < hiddenSize; j++) {
+                        weightsEncoder[j * inputSize + i] += learningRate * (input[i] - outputLayerOutput[i]) * hiddenLayerOutput[j] * (1 - hiddenLayerOutput[j]) * input[i];
+                        weightsDecoder[i * hiddenSize + j] += learningRate * (input[i] - outputLayerOutput[i]) * hiddenLayerOutput[j];
+                    }
+                }
+            }
+        }
+
+        // Test the autoencoder with new data
+        const testData = [0, 1, 0, 0, 0];
+        const encodedData = new Array(hiddenSize).fill(0);
+        const decodedData = new Array(outputSize).fill(0);
+
+        // Forward pass (encoding)
+        for (let i = 0; i < hiddenSize; i++) {
+            encodedData[i] = 0;
+            for (let j = 0; j < inputSize; j++) {
+                encodedData[i] += testData[j] * weightsEncoder[i * inputSize + j];
+            }
+            encodedData[i] += biasEncoder[i];
+        }
+
+        // Forward pass (decoding)
+        for (let i = 0; i < outputSize; i++) {
+            decodedData[i] = 0;
+            for (let j = 0; j < hiddenSize; j++) {
+                decodedData[i] += encodedData[j] * weightsDecoder[i * hiddenSize + j];
+            }
+            decodedData[i] += biasDecoder[i];
+        }
+
+        // Output the results
+        document.write("<h2>Original Data:</h2>");
+        document.write(JSON.stringify(testData));
+        document.write("<h2>Autoencoder Encoded Output:</h2>");
+        document.write(JSON.stringify(encodedData));
+        document.write("<h2>Autoencoder Decoded Output:</h2>");
+        document.write(JSON.stringify(decodedData));
+    </script>
+</body>
+</html>
